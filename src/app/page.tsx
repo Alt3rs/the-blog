@@ -1,20 +1,10 @@
-"use client";
-import clsx from "clsx";
+import { SpinLoader } from '@/components/SpinLoader';
+import clsx from 'clsx';
 
-export default function HomePage() {
-    return (
-        <h1
-            className={clsx(
-                "text-2xl",
-                "font-bold",
-                "text-blue-500",
-                "hover:text-blue-400",
-                "hover:bg-blue-200",
-                "transition",
-                "duration-300"
-            )}
-        >
-            Hello World from / page.tsx
-        </h1>
-    );
+export default async function HomePage() {
+  return (
+    <div>
+      <SpinLoader containerClasses={clsx('min-h-[500px]', 'bg-amber-500')} />
+    </div>
+  );
 }
