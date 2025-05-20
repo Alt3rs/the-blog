@@ -26,18 +26,20 @@ export default async function HomePage() {
         <div className='flex flex-col gap-4 sm:justify-center'>
           <time
             className='text-slate-600 block text-sm/tight'
-            dateTime='2025-05-19'
+            dateTime='2025-04-20'
           >
-            19/05/2025 17:25
+            20/04/2025 10:00
           </time>
+
           <PostHeading as='h1' url='#'>
-            MIBR in the EWC
+            Rerum, vel ex? Impedit ullam harum blanditiis
           </PostHeading>
+
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            veniam, modi perferendis, ex praesentium id numquam sit aut optio,
-            ad distinctio autem quasi mollitia. Quo ducimus fugit tempore in
-            omnis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In velit
+            dolorem est dolor porro, doloribus neque, quidem mollitia
+            doloremque, ad perspiciatis fugiat. Rerum, vel ex? Impedit ullam
+            harum blanditiis mollitia?
           </p>
         </div>
       </section>
