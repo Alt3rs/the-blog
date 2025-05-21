@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Container } from '@/components/Container';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'The  Blog',
+  title: {
+    default: 'The  Blog',
+    template: '%s | The Blog',
+  },
   description: 'Essa seria a descrição  dessa  página.',
 };
 
@@ -13,7 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-BR'>
-      <body>{children}</body>
+      <body>
+        <Container>
+          <Header />
+
+          {children}
+
+          <Footer />
+        </Container>
+      </body>
     </html>
   );
 }
