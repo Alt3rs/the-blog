@@ -6,7 +6,7 @@ type ErrorMessageProps = {
   content: React.ReactNode;
 };
 
-export function ErrorMessage({
+export default function ErrorMessage({
   pageTitle,
   contentTitle,
   content,
