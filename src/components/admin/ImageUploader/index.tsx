@@ -76,7 +76,7 @@ export function ImageUploader() {
         Enviar Imagem
       </Button>
 
-      {!imgUrl && (
+      {!!imgUrl && (
         <div className='flex flex-col gap-4'>
           <p>
             <b>URL:</b>
