@@ -9,7 +9,7 @@ import { ImageUploader } from '../ImageUploader';
 import { makePartialPublicPost, PublicPost } from '@/dto/post/dto';
 import { createPostAction } from '@/actions/post/create-post-action';
 import { toast } from 'react-toastify';
-import { updatePostAction } from '@/actions/post/update-post-action copy';
+import { updatePostAction } from '@/actions/post/update-post-action';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 type ManagePostFormUpdateProps = {
