@@ -1,24 +1,28 @@
 'use client';
 
+import { logoutAction } from '@/actions/login/logout-actions';
 import clsx from 'clsx';
 import {
   CircleXIcon,
   FileTextIcon,
+  HourglassIcon,
   HouseIcon,
+  LogOutIcon,
   MenuIcon,
   PlusIcon,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 
 export function MenuAdmin() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathName = usePathname();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     setIsOpen(false);
-  }, [pathName]);
+  }, [pathname]);
 
   const navClasses = clsx(
     'bg-slate-900 text-slate-100 rounded-lg',
@@ -26,7 +30,7 @@ export function MenuAdmin() {
     'sm:flex-row sm:flex-wrap',
     !isOpen && 'h-10',
     !isOpen && 'overflow-hidden',
-    'sm:overflow-auto sm:h-auto',
+    'sm:overflow-visible sm:h-auto',
   );
   const linkClasses = clsx(
     '[&>svg]:w-[16px] [&>svg]:h-[16px] px-4',
@@ -35,17 +39,33 @@ export function MenuAdmin() {
     'h-10',
     'shrink-0',
   );
-  const openBtnClasses = clsx(linkClasses, 'text-blue-200 italic sm:hidden');
+  const openCloseBtnClasses = clsx(
+    linkClasses,
+    'text-blue-200 italic',
+    'sm:hidden',
+  );
+
+  function handleLogout(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    e.preventDefault();
+
+    startTransition(async () => {
+      await logoutAction();
+    });
+  }
 
   return (
     <nav className={navClasses}>
-      <button onClick={() => setIsOpen(s => !s)} className={openBtnClasses}>
+      <button
+        onClick={() => setIsOpen(s => !s)}
+        className={openCloseBtnClasses}
+      >
         {!isOpen && (
           <>
             <MenuIcon />
             Menu
           </>
         )}
+
         {isOpen && (
           <>
             <CircleXIcon />
@@ -66,8 +86,24 @@ export function MenuAdmin() {
 
       <Link className={linkClasses} href='/admin/post/new'>
         <PlusIcon />
-        Criar Post
+        Criar post
       </Link>
+
+      <a onClick={handleLogout} href='#' className={linkClasses}>
+        {isPending && (
+          <>
+            <HourglassIcon />
+            Aguarde...
+          </>
+        )}
+
+        {!isPending && (
+          <>
+            <LogOutIcon />
+            Sair
+          </>
+        )}
+      </a>
     </nav>
   );
 }
