@@ -89,7 +89,6 @@ export async function verifyJwt(jwt: string | undefined = '') {
     });
     return payload;
   } catch {
-    console.log('Invalid Token');
     return false;
   }
 }
